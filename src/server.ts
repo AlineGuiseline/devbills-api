@@ -1,5 +1,7 @@
+import 'dotenv/config';
 import express, { json } from 'express';
 import { routes } from './routes';
+import { setupMongo } from './database';
 // quando utilizamos libs externas no TS existem 2 cenários:
 // 1. a lib foi escrita com TS ou preparada para TS e possuem
 // as definições de tipos, para o TS conseguir "enxergar"
@@ -8,9 +10,11 @@ import { routes } from './routes';
 // foi feita em outro pacote/lib as definições de tipo para
 // poder ser usada com TS
 
-const app = express();
+setupMongo().then(() => {
+    const app = express();
 
-app.use(json());
-app.use(routes);
+    app.use(json());
+    app.use(routes);
 
-app.listen(3000, () => console.log('🚀 App is running at port 3000!'));
+    app.listen(3000, () => console.log('🚀 App is running at port 3000!'));
+});
