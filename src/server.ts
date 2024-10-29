@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express, { json } from 'express';
 import { routes } from './routes';
 import { setupMongo } from './database';
+import { errorHandler } from './middlewares/error-handler.middleware';
 // quando utilizamos libs externas no TS existem 2 cenários:
 // 1. a lib foi escrita com TS ou preparada para TS e possuem
 // as definições de tipos, para o TS conseguir "enxergar"
@@ -15,6 +16,7 @@ setupMongo().then(() => {
 
     app.use(json());
     app.use(routes);
+    app.use(errorHandler);
 
     app.listen(3000, () => console.log('🚀 App is running at port 3000!'));
 });
