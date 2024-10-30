@@ -3,6 +3,7 @@ import { CategoriesService } from "../services/categories.service";
 import { CategoriesRepository } from "../database/repositories/categories.repository";
 import { CategoryModel } from "../database/schemas/category.schema";
 import { CreateCategoryDTO } from "../dtos/categories.dtos";
+import { StatusCodes } from "http-status-codes";
 
 export class CategoriesController {
     async create(
@@ -13,12 +14,12 @@ export class CategoriesController {
         try {
             const { title, color } = req.body;
 
-        const repository = new CategoriesRepository(CategoryModel);
-        const service = new CategoriesService(repository);
+            const repository = new CategoriesRepository(CategoryModel);
+            const service = new CategoriesService(repository);
 
-        const result = await service.create({ title, color });
+            const result = await service.create({ title, color });
 
-        return res.status(201).json(result);
+            return res.status(StatusCodes.CREATED).json(result);
         } catch (err) {
             next(err);
         }
