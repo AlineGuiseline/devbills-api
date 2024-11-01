@@ -3,8 +3,6 @@
  - por período (início e fim)
  - por categoria
 
-## Listar as categorias
-
 ## Dados de saldo com filtros
  - por período (início e fim)
 
@@ -14,9 +12,11 @@
 ## Dados de balanço com filtros
  - por ano
 
-## Criar categorias DONE
+ ## Criar categorias DONE
  = nome, cor
  - não ser possível criar categorias repetidas
+ 
+## Listar as categorias (DONE)
 
-## Criar transações
- - categoria, nome, valor, data, tipo
+## Criar transações (DONE)
+ - id categoria, nome, valor, data, tipo
