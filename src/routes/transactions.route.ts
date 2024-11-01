@@ -16,3 +16,5 @@ transactionsRoutes.post('/', validator({
     }), 
     controller.create,
 );
+
+transactionsRoutes.get('/', controller.index);
